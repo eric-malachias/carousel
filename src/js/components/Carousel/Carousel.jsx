@@ -5,6 +5,7 @@ import './carousel.sass'
 
 class Carousel extends PureComponent {
   static propTypes = {
+    loading: PropTypes.bool.isRequired,
     onNext: PropTypes.func.isRequired,
     onPrevious: PropTypes.func.isRequired,
     selected: PropTypes.number.isRequired,
@@ -18,8 +19,14 @@ class Carousel extends PureComponent {
   isEmpty () {
     return this.count === 0
   }
+  isLoading () {
+    return this.props.loading
+  }
 
   render () {
+    if (this.isLoading()) {
+      return this.renderLoading()
+    }
     if (this.isEmpty()) {
       return this.renderEmpty()
     }
@@ -28,7 +35,7 @@ class Carousel extends PureComponent {
   }
   renderEmpty () {
     return (
-      <div className="carousel">No images...</div>
+      <div className="carousel no-images">No images...</div>
     )
   }
   renderImage (url, index) {
@@ -38,6 +45,11 @@ class Carousel extends PureComponent {
   }
   renderImages () {
     return this.props.urls.map((url, index) => this.renderImage(url, index))
+  }
+  renderLoading () {
+    return (
+      <div className="carousel no-images">Loading...</div>
+    )
   }
   renderWithImages () {
     const images = this.renderImages()

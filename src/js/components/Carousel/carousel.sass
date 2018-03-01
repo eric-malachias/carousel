@@ -1,11 +1,18 @@
 $arrow-height: 80px
 $arrow-width: 60px
+$carousel-height: 300px
 
 .carousel
   background-color: red
-  height: 300px
+  height: $carousel-height
   overflow: hidden
   position: relative
+  text-align: center
+
+  &.no-images
+    font-size: 3.0em
+    line-height: $carousel-height
+
 .carousel__image
   background-color: green
   background-repeat: no-repeat

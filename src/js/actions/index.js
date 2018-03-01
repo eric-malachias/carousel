@@ -17,6 +17,6 @@ export const loadImageList = (cats, sharks) => {
     // @todo
     // fetch('...')
     _fetch('...')
-      .then(list => receiveImageList(list))
+      .then(list => dispatch(receiveImageList(list)))
   }
 }

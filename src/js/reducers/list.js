@@ -14,7 +14,7 @@ const initialState = {
 }
 
 export default function list (state = initialState, action) {
-  console.log(action)
+  console.info('Action detected:', action)
 
   switch (action.type) {
     case ActionTypes.NEXT_IMAGE:
