@@ -20,6 +20,7 @@ export default class MainSection extends Component {
 
     return (
       <div className="main-section">
+        <div onClick={() => this.props.actions.loadImageList()}> Load Images Please </div>
         <Carousel urls={list.data}
                   selected={list.selected}
                   onNext={this.handleNext}

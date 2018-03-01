@@ -1,4 +1,5 @@
-import { LOAD_IMAGE_LIST, NEXT_IMAGE, PREVIOUS_IMAGE } from '../constants/ActionTypes'
+import * as ActionTypes from '../constants/ActionTypes'
+import { receiveImageList, requestImageList } from '../actions'
 
 const initialState = {
   data: [
@@ -13,26 +14,33 @@ const initialState = {
 }
 
 export default function list (state = initialState, action) {
-  if (state.loading) {
-    return state
-  }
+  console.log(action)
 
   switch (action.type) {
-    case LOAD_IMAGE_LIST:
-      // @todo
-      return state
-    case NEXT_IMAGE:
+    case ActionTypes.NEXT_IMAGE:
       return {
         data: state.data,
         loading: false,
         selected: (state.selected + 1) % state.data.length
       }
-    case PREVIOUS_IMAGE:
+    case ActionTypes.PREVIOUS_IMAGE:
       const previous = state.selected - 1
       return {
         data: state.data,
         loading: false,
         selected: previous >= 0 ? previous : previous + state.data.length
+      }
+    case ActionTypes.RECEIVE_IMAGE_LIST:
+      return {
+        data: action.urls,
+        loading: false,
+        selected: 0
+      }
+    case ActionTypes.REQUEST_IMAGE_LIST:
+      return {
+        data: state.data,
+        loading: true,
+        selected: state.selected
       }
 
     default:
