@@ -20,7 +20,7 @@ class Loader extends PureComponent {
     const parts = []
 
     for (let index = 0; index < this.props.parts; index++) {
-      parts.push(<div className={`part part-${index}`} />)
+      parts.push(<div className={`part part-${index}`} key={index} />)
     }
 
     return parts

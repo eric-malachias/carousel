@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes'
+import { API_URL } from '../constants/Server'
 
 export const nextImage = () => ({ type: types.NEXT_IMAGE })
 export const previousImage = () => ({ type: types.PREVIOUS_IMAGE })
@@ -8,15 +9,8 @@ export const loadImageList = (cats, sharks) => {
   return dispatch => {
     dispatch(requestImageList(cats, sharks))
 
-    function _fetch () {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => resolve([]), 2000)
-      })
-    }
-
-    // @todo
-    // fetch('...')
-    _fetch('...')
+    fetch(`${API_URL}/images?cats=${!!cats}&sharks=${!!sharks}`)
+      .then(response => response.json())
       .then(list => dispatch(receiveImageList(list)))
   }
 }
