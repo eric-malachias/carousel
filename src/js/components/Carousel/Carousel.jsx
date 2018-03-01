@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import CarouselImage from './CarouselImage'
+import Loader from '../Loader'
 import './carousel.sass'
 
 class Carousel extends PureComponent {
@@ -24,9 +25,6 @@ class Carousel extends PureComponent {
   }
 
   render () {
-    if (this.isLoading()) {
-      return this.renderLoading()
-    }
     if (this.isEmpty()) {
       return this.renderEmpty()
     }
@@ -35,7 +33,10 @@ class Carousel extends PureComponent {
   }
   renderEmpty () {
     return (
-      <div className="carousel no-images">No images...</div>
+      <div className="carousel no-images">
+        <Loader active={this.isLoading()} parts={3} />
+        <span>No images...</span>
+      </div>
     )
   }
   renderImage (url, index) {
@@ -46,16 +47,12 @@ class Carousel extends PureComponent {
   renderImages () {
     return this.props.urls.map((url, index) => this.renderImage(url, index))
   }
-  renderLoading () {
-    return (
-      <div className="carousel no-images">Loading...</div>
-    )
-  }
   renderWithImages () {
     const images = this.renderImages()
 
     return (
       <div className={`carousel carousel--selected-${this.props.selected}`}>
+        <Loader active={this.isLoading()} parts={3} />
         {images}
         <div className="carousel__prev" onClick={() => this.props.onPrevious()} />
         <div className="carousel__next" onClick={() => this.props.onNext()} />

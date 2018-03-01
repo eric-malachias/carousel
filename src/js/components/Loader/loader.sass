@@ -1,0 +1,49 @@
+$animation-duration: 1.0s
+$part-color: rgb(0, 122, 255)
+$part-size: 80px
+$transition-duration: 0.3s
+
+.loader
+  height: 100%
+  left: 0
+  opacity: 0.0
+  position: absolute
+  top: 0
+  transition: opacity $transition-duration
+  width: 100%
+  z-index: 10000
+
+  .background
+    background-color: rgba(white, 0.8)
+    height: 100%
+    width: 100%
+
+  .part
+    background-color: $part-color
+    border-radius: $part-size
+    height: $part-size
+    left: 50%
+    margin-left: -$part-size / 2
+    margin-top: -$part-size / 2
+    position: absolute
+    top: 50%
+    transform: scale(0.0)
+    width: $part-size
+
+  &.active
+    opacity: 1.0
+    pointer-events: none
+
+    @for $count from 1 through 10
+      @for $index from 0 through 9
+        &.parts-#{$count}
+          .part-#{$index}
+            animation: loader-animation $animation-duration infinite $animation-duration / $count * $index
+
+@keyframes loader-animation
+  0%
+    opacity: 1.0
+    transform: scale(0.0)
+  100%
+    opacity: 0.0
+    transform: scale(1.0)
