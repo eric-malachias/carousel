@@ -1,0 +1,14 @@
+.carousel {
+  background-color: red;
+  height: 300px;
+  position: relative;
+}
+.carousel__image {
+  background-color: green;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
