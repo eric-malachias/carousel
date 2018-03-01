@@ -82,6 +82,13 @@ webpackConfig.module.rules = webpackConfig.module.rules.concat({
       },
     },
   ],
+}, {
+  test: /\.sass$/,
+  use: [
+    require.resolve('style-loader'),
+    require.resolve('css-loader'),
+    require.resolve('sass-loader')
+  ]
 });
 
 webpackConfig.plugins = webpackConfig.plugins.concat(htmlPlugins);

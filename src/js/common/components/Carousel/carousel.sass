@@ -1,0 +1,27 @@
+$arrow-height: 80px
+$arrow-width: 60px
+
+.carousel
+  background-color: red
+  height: 300px
+  position: relative
+.carousel__image
+  background-color: green
+  background-repeat: no-repeat
+  background-size: contain
+  background-position: center
+  height: 100%
+  position: absolute
+  width: 100%
+.carousel__prev,
+.carousel__next
+  background-color: blue
+  height: $arrow-height
+  margin-top: -$arrow-height / 2
+  position: absolute
+  top: 50%
+  width: $arrow-width
+.carousel__prev
+  left: 0
+.carousel__next
+  right: 0

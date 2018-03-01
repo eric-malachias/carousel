@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import CarouselImage from './CarouselImage'
-import './carousel.css'
+import './carousel.sass'
 
 class Carousel extends PureComponent {
   get count () {
