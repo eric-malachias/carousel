@@ -4,7 +4,7 @@ class CarouselImage extends PureComponent {
   get className () {
     return [
       'carousel__image',
-      this.isActive() ? 'active' : ''
+      `carousel__image--index-${this.props.index}`
     ].join(' ')
   }
   get style () {
@@ -13,9 +13,6 @@ class CarouselImage extends PureComponent {
     }
   }
 
-  isActive () {
-    return this.props.active
-  }
   render () {
     return (
       <div className={this.className} style={this.style}></div>

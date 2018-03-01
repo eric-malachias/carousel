@@ -4,6 +4,7 @@ $arrow-width: 60px
 .carousel
   background-color: red
   height: 300px
+  overflow: hidden
   position: relative
 .carousel__image
   background-color: green
@@ -12,7 +13,14 @@ $arrow-width: 60px
   background-position: center
   height: 100%
   position: absolute
+  transition: left 0.5s
   width: 100%
+@for $selected from 0 through 20
+  @for $index from 0 through 20
+    .carousel--selected-#{$selected}
+      .carousel__image--index-#{$index}
+        left: ($index - $selected) * 100%
+
 .carousel__prev,
 .carousel__next
   background-color: blue
