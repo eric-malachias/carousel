@@ -1,0 +1,3 @@
+export const NEXT_IMAGE = 'NEXT_IMAGE'
+export const PREVIOUS_IMAGE = 'PREVIOUS_IMAGE'
+export const LOAD_IMAGE_LIST = 'LOAD_IMAGE_LIST'

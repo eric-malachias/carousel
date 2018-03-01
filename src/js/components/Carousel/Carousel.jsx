@@ -1,32 +1,22 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import CarouselImage from './CarouselImage'
 import './carousel.sass'
 
 class Carousel extends PureComponent {
-  get count () {
-    return this.list.length
-  }
-  get list () {
-    return Array.isArray(this.props.list) ? this.props.list : []
+  static propTypes = {
+    onNext: PropTypes.func.isRequired,
+    onPrevious: PropTypes.func.isRequired,
+    selected: PropTypes.number.isRequired,
+    urls: PropTypes.array.isRequired
   }
 
-  state = {
-    selectedImage: 0
+  get count () {
+    return this.props.urls.length
   }
 
   isEmpty () {
     return this.count === 0
-  }
-  next () {
-    this.select(1)
-  }
-  previous () {
-    this.select(-1)
-  }
-  select (inc) {
-    this.setState({
-      selectedImage: (this.count + this.state.selectedImage + inc) % this.count
-    })
   }
 
   render () {
@@ -47,16 +37,16 @@ class Carousel extends PureComponent {
     )
   }
   renderImages () {
-    return this.list.map((url, index) => this.renderImage(url, index))
+    return this.props.urls.map((url, index) => this.renderImage(url, index))
   }
   renderWithImages () {
     const images = this.renderImages()
 
     return (
-      <div className={`carousel carousel--selected-${this.state.selectedImage}`}>
+      <div className={`carousel carousel--selected-${this.props.selected}`}>
         {images}
-        <div className="carousel__prev" onClick={() => this.previous()} />
-        <div className="carousel__next" onClick={() => this.next()} />
+        <div className="carousel__prev" onClick={() => this.props.onPrevious()} />
+        <div className="carousel__next" onClick={() => this.props.onNext()} />
       </div>
     )
   }

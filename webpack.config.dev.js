@@ -8,7 +8,7 @@ import postcssCssnext from 'postcss-cssnext';
 import webpackConfig, { JS_SOURCE } from './webpack.config.common';
 
 const PUBLIC_PATH = config.get('publicPath');
-const APP_ENTRY_POINT = `${JS_SOURCE}/router`;
+const APP_ENTRY_POINT = `${JS_SOURCE}/index`;
 
 const webpackDevOutput = {
   publicPath: `http://${PUBLIC_PATH}/`,
