@@ -39,6 +39,8 @@ class Carousel extends PureComponent {
     return (
       <div className="carousel">
         {images}
+        <div className="carousel__prev" />
+        <div className="carousel__next" />
       </div>
     )
   }
