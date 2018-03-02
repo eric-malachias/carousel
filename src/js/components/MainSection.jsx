@@ -28,7 +28,7 @@ export default class MainSection extends Component {
                         onChange={this.handleChange} />
         <Carousel urls={list.data}
                   selected={list.selected}
-                  loading={list.loading}
+                  loading={list.loading !== 0}
                   onNext={this.handleNext}
                   onPrevious={this.handlePrevious} />
       </div>
