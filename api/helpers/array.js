@@ -14,8 +14,6 @@ exports.mergeRandomly = function mergeRandomly (a, b) {
     if (source.length) {
       result.push(source.shift())
     }
-
-    console.log(a.length, b.length, result.length)
   }
 
   return result
