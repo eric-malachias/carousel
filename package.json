@@ -1,23 +1,12 @@
 {
   "name": "react-redux-boilerplate",
   "version": "0.9.36",
-  "description": "React Redux Boilerplate is a workflow boilerplate that make life easier for developers by providing a virtual development environment and production ready build process framework out of the box.",
+  "description": "Carousel by Eric Malachias",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dashboard -p 3300 -c red -t dashboard -- node bin/commands.js dev",
-    "build": "cross-env NODE_ENV=production node bin/commands.js build",
-    "build:release": "cross-env NODE_ENV=release node bin/commands.js build",
-    "clean": "rimraf docroot",
-    "test": "jest --no-cache",
-    "lint": "node bin/commands.js lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docroot/doc"
+    "build": "cross-env NODE_ENV=production node bin/commands.js build"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/iroy2000/react-redux-boilerplate.git"
-  },
-  "homepage": "https://github.com/iroy2000/react-redux-boilerplate",
-  "author": "Roy Yu <iroy2000@gmail.com>",
+  "author": "Eric Malachias <malachias.eric@gmail.com",
   "license": "MIT",
   "engines": {
     "npm": ">=3.10.7",
