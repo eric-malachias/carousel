@@ -3,8 +3,8 @@ import React, { PureComponent } from 'react'
 class CarouselImage extends PureComponent {
   get className () {
     return [
-      'carousel__image',
-      `carousel__image--index-${this.props.index}`
+      'carousel-image',
+      `index-${this.props.index}`
     ].join(' ')
   }
   get style () {

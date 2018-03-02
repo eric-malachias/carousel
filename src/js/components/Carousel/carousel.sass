@@ -1,9 +1,9 @@
 $arrow-height: 80px
 $arrow-width: 60px
 $carousel-height: 300px
+$image-index-width: 170px
 
 .carousel
-  background-color: red
   height: $carousel-height
   overflow: hidden
   position: relative
@@ -13,8 +13,38 @@ $carousel-height: 300px
     font-size: 3.0em
     line-height: $carousel-height
 
-.carousel__image
-  background-color: green
+  .previous,
+  .next
+    background-color: blue
+    height: $arrow-height
+    margin-top: -$arrow-height / 2
+    position: absolute
+    top: 50%
+    width: $arrow-width
+  .previous
+    left: 0
+  .next
+    right: 0
+
+  .image-index
+    background-color: rgba(black, 0.5)
+    bottom: 5px
+    color: white
+    font-size: 0.8em
+    left: 50%
+    margin-left: -$image-index-width / 2
+    opacity: 0.0
+    padding: 5px
+    position: absolute
+    text-align: center
+    transition: opacity 0.3s
+    width: $image-index-width
+
+  &:hover
+    .image-index
+      opacity: 1.0
+
+.carousel-image
   background-repeat: no-repeat
   background-size: contain
   background-position: center
@@ -22,21 +52,9 @@ $carousel-height: 300px
   position: absolute
   transition: left 0.5s
   width: 100%
+
 @for $selected from 0 through 20
   @for $index from 0 through 20
-    .carousel--selected-#{$selected}
-      .carousel__image--index-#{$index}
+    .carousel.selected-#{$selected}
+      .carousel-image.index-#{$index}
         left: ($index - $selected) * 100%
-
-.carousel__prev,
-.carousel__next
-  background-color: blue
-  height: $arrow-height
-  margin-top: -$arrow-height / 2
-  position: absolute
-  top: 50%
-  width: $arrow-width
-.carousel__prev
-  left: 0
-.carousel__next
-  right: 0

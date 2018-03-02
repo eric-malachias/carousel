@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Carousel from './Carousel'
+import ToggleOptions from './ToggleOptions'
 
 export default class MainSection extends Component {
   static propTypes = {
@@ -8,6 +9,9 @@ export default class MainSection extends Component {
     list: PropTypes.object.isRequired
   }
 
+  handleChange = (options) => {
+    this.props.actions.loadImageList(options.has('cats'), options.has('sharks'))
+  }
   handleNext = () => {
     this.props.actions.nextImage()
   }
@@ -20,7 +24,8 @@ export default class MainSection extends Component {
 
     return (
       <div className="main-section">
-        <div onClick={() => this.props.actions.loadImageList()}> Load Images Please </div>
+        <ToggleOptions  options={{ cats: 'Cats', sharks: 'Sharks' }}
+                        onChange={this.handleChange} />
         <Carousel urls={list.data}
                   selected={list.selected}
                   loading={list.loading}

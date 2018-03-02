@@ -51,11 +51,12 @@ class Carousel extends PureComponent {
     const images = this.renderImages()
 
     return (
-      <div className={`carousel carousel--selected-${this.props.selected}`}>
+      <div className={`carousel selected-${this.props.selected}`}>
         <Loader active={this.isLoading()} parts={3} />
         {images}
-        <div className="carousel__prev" onClick={() => this.props.onPrevious()} />
-        <div className="carousel__next" onClick={() => this.props.onNext()} />
+        <div className="previous" onClick={() => this.props.onPrevious()} />
+        <div className="next" onClick={() => this.props.onNext()} />
+        <div className="image-index">{`Showing image ${this.props.selected + 1} of ${this.count}`}</div>
       </div>
     )
   }
