@@ -14,7 +14,7 @@ import webpackConfig, { JS_SOURCE } from './webpack.config.common';
 // ----------------------------------------------------------
 
 const PUBLIC_PATH = config.get('publicPath');
-const APP_ENTRY_POINT = `${JS_SOURCE}/router`;
+const APP_ENTRY_POINT = `${JS_SOURCE}/index`;
 
 const webpackProdOutput = {
   publicPath: PUBLIC_PATH,
@@ -84,6 +84,13 @@ webpackConfig.module.rules = webpackConfig.module.rules.concat({
       }
     ]
   })
+}, {
+  test: /\.sass$/,
+  use: [
+    require.resolve('style-loader'),
+    require.resolve('css-loader'),
+    require.resolve('sass-loader')
+  ]
 });
 
 webpackConfig.devtool = 'source-map';
