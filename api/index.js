@@ -6,6 +6,6 @@ const api = require('./api')
 app.disable('etag')
 
 app.use('/api', api)
-app.use(express.static('../test-web/docroot'))
+app.use(express.static('../web/docroot'))
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000.'))
