@@ -1,6 +1,6 @@
 $arrow-height: 80px
 $arrow-width: 60px
-$carousel-height: 300px
+$carousel-height: 400px
 $image-index-width: 170px
 
 .carousel
@@ -13,18 +13,44 @@ $image-index-width: 170px
     font-size: 3.0em
     line-height: $carousel-height
 
-  .previous,
-  .next
-    background-color: blue
+  .arrow
+    background-color: rgba(black, 0.2)
+    cursor: pointer
     height: $arrow-height
     margin-top: -$arrow-height / 2
     position: absolute
     top: 50%
     width: $arrow-width
-  .previous
-    left: 0
-  .next
-    right: 0
+
+    .line
+      background-color: black
+      height: 2px
+      left: 50%
+      margin-left: -20%
+      margin-top: -1px
+      position: absolute
+      top: 50%
+      transition: all 0.3s
+      width: 40%
+
+    &.previous
+      left: 0
+
+      .line
+        transform-origin: left center
+
+    &.next
+      right: 0
+
+      .line
+        transform-origin: right center
+
+
+    &:hover
+      .line-0
+        transform: rotate(45deg)
+      .line-1
+        transform: rotate(-45deg)
 
   .image-index
     background-color: rgba(black, 0.5)
